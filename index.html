@@ -1,1 +1,322 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game Downloads</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+		rel="stylesheet">
+	<style>
+		/* --- GLOBAL STYLES --- */
+		:root {
+			--bg-color: #0d0d12;
+			--card-bg: #1a1a24;
+			--text-main: #e0e0e0;
+			--text-muted: #a0a0b0;
+			--accent-color: #e63946;
+			/* Spider-Man Red */
+			--accent-hover: #ff4d5a;
+			--gta-accent: #2a9d8f;
+			/* GTA Green */
+			--gta-hover: #34c7b6;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background-color: var(--bg-color);
+			color: var(--text-main);
+			font-family: 'Poppins', sans-serif;
+			line-height: 1.6;
+			padding: 40px 20px;
+			background-image: radial-gradient(circle at top right, #2c1e22 0%, #0d0d12 40%);
+			min-height: 100vh;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-family: 'Oswald', sans-serif;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 15px;
+		}
+
+		/* --- GAME CARD CONTAINER --- */
+		.game-section {
+			max-width: 900px;
+			margin: 0 auto 50px auto;
+			background: var(--card-bg);
+			border-radius: 16px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+			border: 1px solid rgba(255, 255, 255, 0.05);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.game-section:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+		}
+
+		/* Top banner image area */
+		.banner {
+			width: 100%;
+			height: 150px;
+			background-size: cover;
+			background-position: center;
+			border-bottom: 3px solid var(--accent-color);
+		}
+
+		/* Modify border color for the GTA card */
+		.game-section.gta .banner {
+			border-bottom: 3px solid var(--gta-accent);
+		}
+
+		.content-wrapper {
+			padding: 30px;
+		}
+
+		.title {
+			color: #fff;
+			font-size: 2rem;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
+
+		/* --- TEXT & LISTS --- */
+		.info-text {
+			color: var(--text-muted);
+			font-size: 0.95rem;
+			margin-bottom: 20px;
+		}
+
+		.highlight {
+			color: var(--accent-color);
+			font-weight: 600;
+		}
+
+		.gta .highlight {
+			color: var(--gta-accent);
+		}
+
+		ul,
+		ol {
+			margin-left: 20px;
+			margin-bottom: 25px;
+			color: #ccc;
+		}
+
+		li {
+			margin-bottom: 8px;
+		}
+
+		/* --- BUTTON STYLES & ANIMATIONS --- */
+		.button-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+			gap: 15px;
+			margin-top: 20px;
+		}
+
+		.btn {
+			display: inline-block;
+			background: rgba(255, 255, 255, 0.05);
+			color: #fff;
+			text-decoration: none;
+			padding: 12px 20px;
+			border-radius: 8px;
+			text-align: center;
+			font-family: 'Oswald', sans-serif;
+			font-size: 1rem;
+			letter-spacing: 0.5px;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+		}
+
+		/* Background hover fill effect */
+		.btn::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			background: var(--accent-color);
+			transition: width 0.3s ease;
+			z-index: -1;
+		}
+
+		.btn:hover::before {
+			width: 100%;
+		}
+
+		.btn:hover {
+			border-color: var(--accent-color);
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+		}
+
+		/* GTA Button overrides */
+		.gta .btn::before {
+			background: var(--gta-accent);
+		}
+
+		.gta .btn:hover {
+			border-color: var(--gta-accent);
+			box-shadow: 0 5px 15px rgba(42, 157, 143, 0.4);
+		}
+
+		.btn.large {
+			grid-column: 1 / -1;
+		}
+
+		a.link {
+			color: var(--accent-color);
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+
+	<section class="game-section">
+		<div class="banner"
+			style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=1000&auto=format&fit=crop');">
+		</div>
+
+		<div class="content-wrapper">
+			<h1 class="title">The Amazing Spider-Man PC</h1>
+
+			<div class="info-text">
+				<p><strong>Download The Amazing Spider-Man 2 PC Game For Free.</strong></p>
+				<p>[+] Virus Scan: Non Infected | Scanned by McAfee</p>
+				<p>[+] File Size: 8 GB</p>
+				<p>[+] Collected From: AKTV [YouTube]</p>
+			</div>
+
+			<h2 style="font-size: 1.2rem; margin-top: 10px;">Installation Instructions:</h2>
+			<ol>
+				<li>Download all files below.</li>
+				<li>After downloading, select all files.</li>
+				<li>Extract them. Password is <a class="link" href="http://www.download.ir"
+						target="_blank">www.download.ir</a></li>
+				<li>Run the setup file.</li>
+				<li>Click on install.</li>
+				<li>Run the launcher and enjoy!</li>
+			</ol>
+
+			<div class="button-grid">
+				<a href="https://drive.google.com/uc?id=1J6uUN_LL8RET36znCXnvk8b-ZvUGpOs4&export=download" class="btn"
+					target="_blank">Part 1</a>
+				<a href="https://drive.google.com/uc?id=11a6vVJYGp_Gn9udfknRI2bLLWww_wh-I&export=download" class="btn"
+					target="_blank">Part 2</a>
+				<a href="https://drive.google.com/uc?id=1G7XyDe7SRcN7YkzyDavQGT3kmR7nSRpD&export=download" class="btn"
+					target="_blank">Part 3</a>
+				<a href="https://drive.google.com/uc?id=1_1rYAWYJ7ZhJruVixqUPWCAAEqrQFk3H&export=download" class="btn"
+					target="_blank">Part 4</a>
+				<a href="https://drive.google.com/uc?id=1VhDW80xjZ03CXmiy5oDZiGtnEW67skyU&export=download" class="btn"
+					target="_blank">Part 5</a>
+				<a href="https://drive.google.com/uc?id=1seVQJOPXPbnkKl5F72XjTmx8fAd_7pMI&export=download" class="btn"
+					target="_blank">Part 6</a>
+				<a href="https://drive.google.com/uc?id=1X-3iJw0H1ihhB4jK2_ijI7lNLjFogWZj&export=download" class="btn"
+					target="_blank">Part 7</a>
+				<a href="https://drive.google.com/uc?id=1C5ff_vcVjTki6vnK5C2zvF2VzLiC-Wfl&export=download" class="btn"
+					target="_blank">Part 8</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="game-section">
+		<div class="banner"
+			style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534809027769-63715b3c5825?q=80&w=1000&auto=format&fit=crop');">
+		</div>
+
+		<div class="content-wrapper">
+			<h1 class="title">The Amazing Spider-Man 2 Android</h1>
+			<p class="info-text highlight">Modded by Androeed Gamer</p>
+
+			<h2 style="font-size: 1.2rem;">Instructions:</h2>
+			<div class="info-text">
+				<p><strong>For latest link:</strong> Download the files -> Install APK -> Click Start.</p>
+				<p><strong>For old version:</strong> Install APK -> Extract the file -> Put them in
+					<code>/android/obb/</code> -> Enjoy!</p>
+				<p style="margin-top: 10px; font-size: 0.85rem; color: #888;">⚠️ This TASM 2 Mod is made by Androeed
+					Gamer. Please respect his effort and kindly visit his YouTube channel.</p>
+			</div>
+
+			<div class="button-grid">
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fq17li85z5x1s4d1%2FASM2_MOD_SIGNED.apk%2Ffile&sa=D&sntz=1&usg=AOvVaw05InWCUaY4WO9HN9puFtob"
+					class="btn large" target="_blank">Download APK+OBB (633 MB)</a>
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fkfdkawi96phd61u%2FTASM_2_v1.2.7d_Mega_MOD%2520_%252528All_Suits_Purchased%252529_By_Androeed_Gamer.apk%2Ffile&sa=D&sntz=1&usg=AOvVaw3aTwmr-L6JcGEX3QQ40363"
+					class="btn" target="_blank">Old Version APK</a>
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fapkaward.com%2Fthe-amazing-spider-man-2-mod-obb&sa=D&sntz=1&usg=AOvVaw3ZO3kLj9of0tzMF4zap4zE"
+					class="btn" target="_blank">Download OBB</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="game-section">
+		<div class="content-wrapper">
+			<h1 class="title">The Amazing Spider-Man 1 Android</h1>
+
+			<h2 style="font-size: 1.2rem; margin-top: 15px;">To Install:</h2>
+			<ul>
+				<li>Download files below.</li>
+				<li>Install APK from any file manager.</li>
+				<li>Extract files and put it in <code>Android/data/</code></li>
+			</ul>
+
+			<h2 style="font-size: 1.2rem;">Mod Details:</h2>
+			<p class="info-text">Do at least 2 missions, then purchase some items. Your money will not decrease; it will
+				increase after every purchase. (Note: Graphics are not that good).</p>
+
+			<div class="button-grid">
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fapkaward.com%2Fthe-amazing-spider-man&sa=D&sntz=1&usg=AOvVaw0J3C1M-bTHvqzQDxgh_V3P"
+					class="btn" target="_blank">Mod APK</a>
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2F6urg82m3r7pgosx%2FTasm1android.apk%2Ffile&sa=D&sntz=1&usg=AOvVaw3_tUdvMhA6e8Exy-lLj0vk"
+					class="btn" target="_blank">MediaFire Link</a>
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fapkout.com%2Fgetapkn.php&sa=D&sntz=1&usg=AOvVaw12GwtnFmhdbzgCrzZOCGXG"
+					class="btn" target="_blank">Download Data</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="game-section gta">
+		<div class="banner"
+			style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1593096277637-2d12cefbba1a?q=80&w=1000&auto=format&fit=crop');">
+		</div>
+
+		<div class="content-wrapper">
+			<h1 class="title">GTA SA Android</h1>
+
+			<div class="info-text">
+				<p><strong>[ Mod APK ]</strong></p>
+				<p>APK Size: 16.2 MB | OBB Size: 1805 MB</p>
+			</div>
+
+			<div class="button-grid">
+				<a href="https://drive.google.com/file/d/1GGmtXHCdu81YGNSworePUKMDM1hBcjSX/view?usp=share_link"
+					class="btn" target="_blank">Download APK</a>
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fan1.com%2Ffile_6639-dw_cache.html&sa=D&sntz=1&usg=AOvVaw2XI_EJU7awJyqyoChUBU42"
+					class="btn" target="_blank">Download OBB</a>
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2F1irehjuzcx2azsy%2FGTA_SA_2.0.Cleo%252528Nougat%25252COreo%25252CPie%25252C_Android_10%252529.apk%2Ffile&sa=D&sntz=1&usg=AOvVaw2UFBLZyEPEYxkuFrIGacn9"
+					class="btn large" target="_blank">Download APK (Cleo Cheat)</a>
+				<a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fku1k3z4u5g6r01b%2FDATA_ANDRENO.7z%2Ffile&sa=D&sntz=1&usg=AOvVaw1G6zfkYIomjLs1ZzCwOiq0"
+					class="btn large" target="_blank">Data Adreno</a>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>
