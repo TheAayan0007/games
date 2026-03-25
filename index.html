@@ -1,852 +1,702 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SPIDER-MAN GAME DOWNLOADS</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<title>GAME VAULT — Download Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --red: #E8001D;
-    --dark-red: #8B0010;
-    --blue: #0033A0;
-    --dark-blue: #001a5e;
-    --gold: #FFD700;
-    --black: #070708;
-    --dark: #0d0d14;
-    --panel: rgba(10,10,20,0.85);
-    --glow-red: 0 0 20px rgba(232,0,29,0.6), 0 0 40px rgba(232,0,29,0.3);
-    --glow-blue: 0 0 20px rgba(0,51,160,0.6), 0 0 40px rgba(0,51,160,0.3);
-    --border: rgba(232,0,29,0.3);
+    --red: #e63030;
+    --blue: #1a6fff;
+    --gold: #f5c518;
+    --dark: #080a0f;
+    --darker: #040508;
+    --surface: #0d1117;
+    --surface2: #131923;
+    --border: rgba(255,255,255,0.06);
+    --text: #c8d0e0;
+    --text-dim: #5a6478;
+    --glow-red: 0 0 40px rgba(230,48,48,0.3);
+    --glow-blue: 0 0 40px rgba(26,111,255,0.3);
+    --glow-gold: 0 0 40px rgba(245,197,24,0.3);
   }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-background: var(–black);
-color: #e0e0e8;
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 16px;
-overflow-x: hidden;
-cursor: crosshair;
-}
-
-/* WEB BACKGROUND */
-body::before {
-content: ‘’;
-position: fixed;
-inset: 0;
-background-image:
-repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(232,0,29,0.04) 60px, rgba(232,0,29,0.04) 61px),
-repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,51,160,0.04) 60px, rgba(0,51,160,0.04) 61px);
-pointer-events: none;
-z-index: 0;
-}
-
-/* SPIDER WEB SVG OVERLAY */
-body::after {
-content: ‘’;
-position: fixed;
-top: -50%;
-right: -20%;
-width: 700px;
-height: 700px;
-background: radial-gradient(ellipse at center,
-transparent 30%,
-rgba(232,0,29,0.03) 31%, transparent 32%,
-rgba(232,0,29,0.03) 48%, transparent 49%,
-rgba(232,0,29,0.03) 64%, transparent 65%,
-rgba(232,0,29,0.03) 79%, transparent 80%
-);
-pointer-events: none;
-z-index: 0;
-animation: spinWeb 60s linear infinite;
-}
-
-@keyframes spinWeb {
-from { transform: rotate(0deg); }
-to { transform: rotate(360deg); }
-}
-
-/* HERO HEADER */
-.site-header {
-position: relative;
-text-align: center;
-padding: 80px 20px 60px;
-overflow: hidden;
-z-index: 1;
-}
-
-.site-header::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: radial-gradient(ellipse at 50% 0%, rgba(232,0,29,0.25) 0%, transparent 70%);
-pointer-events: none;
-}
-
-.logo-spider {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(48px, 10vw, 110px);
-letter-spacing: 8px;
-line-height: 0.9;
-color: #fff;
-text-shadow: var(–glow-red);
-position: relative;
-display: inline-block;
-animation: logoEntrance 1s cubic-bezier(0.23,1,0.32,1) both;
-}
-
-.logo-spider span {
-color: var(–red);
-display: block;
-font-size: 1.1em;
-text-shadow: var(–glow-red);
-animation: pulseLogo 3s ease-in-out infinite;
-}
-
-@keyframes logoEntrance {
-from { opacity: 0; transform: scale(0.7) translateY(-30px); letter-spacing: 30px; }
-to { opacity: 1; transform: scale(1) translateY(0); letter-spacing: 8px; }
-}
-
-@keyframes pulseLogo {
-0%, 100% { text-shadow: var(–glow-red); }
-50% { text-shadow: 0 0 40px rgba(232,0,29,0.9), 0 0 80px rgba(232,0,29,0.5); }
-}
-
-.header-sub {
-font-family: ‘Orbitron’, sans-serif;
-font-size: 11px;
-letter-spacing: 6px;
-color: rgba(255,255,255,0.4);
-margin-top: 12px;
-text-transform: uppercase;
-animation: fadeUp 1s 0.3s both;
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* DIVIDER */
-.divider {
-display: flex;
-align-items: center;
-gap: 16px;
-padding: 0 40px;
-margin: 8px 0;
-z-index: 1;
-position: relative;
-}
-
-.divider::before, .divider::after {
-content: ‘’;
-flex: 1;
-height: 1px;
-background: linear-gradient(90deg, transparent, var(–red), transparent);
-}
-
-.divider-icon {
-font-size: 18px;
-color: var(–red);
-filter: drop-shadow(0 0 6px var(–red));
-}
-
-/* MAIN WRAPPER */
-.wrapper {
-max-width: 1100px;
-margin: 0 auto;
-padding: 20px 24px 80px;
-position: relative;
-z-index: 1;
-}
-
-/* SECTION CARDS */
-.game-section {
-position: relative;
-margin-bottom: 60px;
-border-radius: 4px;
-overflow: hidden;
-animation: cardEntrance 0.8s cubic-bezier(0.23,1,0.32,1) both;
-}
-
-.game-section:nth-child(1) { animation-delay: 0.1s; }
-.game-section:nth-child(2) { animation-delay: 0.25s; }
-.game-section:nth-child(3) { animation-delay: 0.4s; }
-.game-section:nth-child(4) { animation-delay: 0.55s; }
-
-@keyframes cardEntrance {
-from { opacity: 0; transform: translateY(40px) skewY(1deg); }
-to { opacity: 1; transform: translateY(0) skewY(0deg); }
-}
-
-/* SECTION BG WITH PARALLAX EFFECT */
-.section-bg {
-position: absolute;
-inset: 0;
-background-size: cover;
-background-position: center;
-filter: brightness(0.18) saturate(0.5);
-transform: scale(1.1);
-transition: filter 0.5s ease, transform 0.5s ease;
-z-index: 0;
-}
-
-.game-section:hover .section-bg {
-filter: brightness(0.25) saturate(0.7);
-transform: scale(1.05);
-}
-
-/* CORNER ACCENTS */
-.game-section::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0;
-width: 60px; height: 60px;
-border-top: 2px solid var(–red);
-border-left: 2px solid var(–red);
-z-index: 3;
-transition: width 0.3s, height 0.3s, box-shadow 0.3s;
-}
-
-.game-section::after {
-content: ‘’;
-position: absolute;
-bottom: 0; right: 0;
-width: 60px; height: 60px;
-border-bottom: 2px solid var(–blue);
-border-right: 2px solid var(–blue);
-z-index: 3;
-transition: width 0.3s, height 0.3s, box-shadow 0.3s;
-}
-
-.game-section:hover::before {
-width: 100px; height: 100px;
-box-shadow: var(–glow-red);
-}
-
-.game-section:hover::after {
-width: 100px; height: 100px;
-box-shadow: var(–glow-blue);
-}
-
-/* SECTION INNER */
-.section-inner {
-position: relative;
-z-index: 2;
-padding: 40px 40px 36px;
-background: linear-gradient(135deg,
-rgba(10,10,20,0.92) 0%,
-rgba(10,10,30,0.88) 60%,
-rgba(8,0,15,0.92) 100%
-);
-backdrop-filter: blur(4px);
-}
-
-/* SECTION TITLE */
-.section-title {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(28px, 5vw, 48px);
-letter-spacing: 4px;
-color: #fff;
-text-shadow: 2px 2px 0 var(–red), var(–glow-red);
-margin-bottom: 6px;
-display: flex;
-align-items: center;
-gap: 12px;
-}
-
-.section-title .badge {
-font-family: ‘Orbitron’, sans-serif;
-font-size: 10px;
-letter-spacing: 2px;
-padding: 4px 10px;
-background: var(–red);
-color: #fff;
-border-radius: 2px;
-vertical-align: middle;
-box-shadow: var(–glow-red);
-animation: badgePulse 2s ease-in-out infinite;
-}
-
-@keyframes badgePulse {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.7; }
-}
-
-/* METADATA */
-.meta-list {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-margin: 16px 0 24px;
-list-style: none;
-}
-
-.meta-list li {
-font-family: ‘Orbitron’, sans-serif;
-font-size: 10px;
-letter-spacing: 1.5px;
-color: rgba(255,255,255,0.5);
-padding: 5px 12px;
-border: 1px solid rgba(255,255,255,0.1);
-border-radius: 2px;
-position: relative;
-overflow: hidden;
-}
-
-.meta-list li.verified {
-color: #00ff8c;
-border-color: rgba(0,255,140,0.3);
-text-shadow: 0 0 8px rgba(0,255,140,0.5);
-}
-
-/* INSTRUCTIONS */
-.instructions {
-background: rgba(0,0,0,0.4);
-border-left: 3px solid var(–red);
-padding: 16px 20px;
-margin-bottom: 28px;
-border-radius: 0 4px 4px 0;
-}
-
-.instructions-title {
-font-family: ‘Orbitron’, sans-serif;
-font-size: 10px;
-letter-spacing: 3px;
-color: var(–red);
-margin-bottom: 12px;
-text-transform: uppercase;
-}
-
-.instructions ol {
-list-style: none;
-counter-reset: steps;
-padding: 0;
-}
-
-.instructions ol li {
-counter-increment: steps;
-display: flex;
-align-items: flex-start;
-gap: 12px;
-padding: 7px 0;
-font-size: 14px;
-font-weight: 600;
-letter-spacing: 1px;
-color: rgba(255,255,255,0.75);
-border-bottom: 1px solid rgba(255,255,255,0.05);
-text-transform: uppercase;
-}
-
-.instructions ol li:last-child { border-bottom: none; }
-
-.instructions ol li::before {
-content: counter(steps, decimal-leading-zero);
-font-family: ‘Orbitron’, sans-serif;
-font-size: 9px;
-color: var(–red);
-background: rgba(232,0,29,0.1);
-border: 1px solid rgba(232,0,29,0.3);
-padding: 3px 6px;
-min-width: 32px;
-text-align: center;
-border-radius: 2px;
-flex-shrink: 0;
-margin-top: 1px;
-}
-
-/* PASSWORD */
-.password-box {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-background: rgba(232,0,29,0.08);
-border: 1px solid rgba(232,0,29,0.3);
-padding: 10px 16px;
-margin-bottom: 28px;
-border-radius: 3px;
-font-family: ‘Orbitron’, sans-serif;
-font-size: 11px;
-letter-spacing: 2px;
-color: rgba(255,255,255,0.6);
-}
-
-.password-box strong {
-color: var(–gold);
-text-shadow: 0 0 10px rgba(255,215,0,0.5);
-font-size: 12px;
-}
-
-/* DOWNLOAD BUTTONS GRID */
-.download-grid {
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
-}
-
-/* DOWNLOAD BUTTON */
-.dl-btn {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-padding: 14px 24px;
-background: linear-gradient(135deg, rgba(232,0,29,0.15) 0%, rgba(10,10,30,0.9) 100%);
-border: 1px solid rgba(232,0,29,0.4);
-color: #fff;
-text-decoration: none;
-font-family: ‘Orbitron’, sans-serif;
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 2px;
-text-transform: uppercase;
-border-radius: 3px;
-position: relative;
-overflow: hidden;
-transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
-cursor: pointer;
-white-space: nowrap;
-}
-
-.dl-btn::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: linear-gradient(135deg, var(–red) 0%, var(–dark-red) 100%);
-opacity: 0;
-transition: opacity 0.35s ease;
-z-index: 0;
-}
-
-/* Shimmer sweep */
-.dl-btn::after {
-content: ‘’;
-position: absolute;
-top: 0;
-left: -100%;
-width: 60%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-transition: left 0.5s ease;
-z-index: 1;
-}
-
-.dl-btn:hover::after {
-left: 150%;
-}
-
-.dl-btn:hover {
-border-color: var(–red);
-box-shadow: 0 0 25px rgba(232,0,29,0.5), inset 0 0 20px rgba(232,0,29,0.1);
-transform: translateY(-3px) scale(1.03);
-color: #fff;
-}
-
-.dl-btn:hover::before { opacity: 1; }
-
-.dl-btn:active {
-transform: translateY(0) scale(0.98);
-box-shadow: 0 0 10px rgba(232,0,29,0.3);
-}
-
-.dl-btn span {
-position: relative;
-z-index: 2;
-}
-
-.dl-btn .btn-icon {
-position: relative;
-z-index: 2;
-font-size: 14px;
-transition: transform 0.3s ease;
-}
-
-.dl-btn:hover .btn-icon {
-transform: translateY(2px);
-animation: bounce 0.6s ease infinite alternate;
-}
-
-@keyframes bounce {
-from { transform: translateY(0); }
-to { transform: translateY(3px); }
-}
-
-/* PART BUTTONS - smaller style */
-.dl-btn.part {
-padding: 11px 20px;
-font-size: 10px;
-letter-spacing: 1.5px;
-background: linear-gradient(135deg, rgba(0,51,160,0.15) 0%, rgba(10,10,30,0.9) 100%);
-border-color: rgba(0,51,160,0.4);
-}
-
-.dl-btn.part:hover {
-border-color: var(–blue);
-box-shadow: 0 0 25px rgba(0,51,160,0.5), inset 0 0 20px rgba(0,51,160,0.1);
-}
-
-.dl-btn.part::before {
-background: linear-gradient(135deg, var(–blue) 0%, var(–dark-blue) 100%);
-}
-
-/* PLATFORM TAG */
-.platform-tag {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-font-family: ‘Orbitron’, sans-serif;
-font-size: 9px;
-letter-spacing: 2px;
-color: rgba(255,255,255,0.3);
-text-transform: uppercase;
-margin-bottom: 20px;
-padding: 4px 0;
-border-bottom: 1px solid rgba(255,255,255,0.08);
-width: 100%;
-}
-
-.platform-tag::before {
-content: ‘’;
-width: 6px; height: 6px;
-border-radius: 50%;
-background: var(–red);
-box-shadow: 0 0 8px var(–red);
-animation: blink 1.5s ease-in-out infinite;
-}
-
-@keyframes blink {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.2; }
-}
-
-/* NOTE TEXT */
-.note {
-font-size: 12px;
-font-weight: 600;
-letter-spacing: 1px;
-color: rgba(255,255,255,0.35);
-margin: 16px 0 8px;
-text-transform: uppercase;
-font-family: ‘Orbitron’, sans-serif;
-}
-
-.note.recommended { color: #00ff8c; text-shadow: 0 0 8px rgba(0,255,140,0.4); }
-.note.warning { color: #ff9500; text-shadow: 0 0 8px rgba(255,149,0,0.4); }
-
-/* CREDIT BOX */
-.credit-box {
-background: rgba(255,215,0,0.05);
-border: 1px solid rgba(255,215,0,0.2);
-padding: 12px 16px;
-border-radius: 3px;
-font-size: 13px;
-font-weight: 600;
-color: rgba(255,255,255,0.5);
-letter-spacing: 1px;
-margin: 20px 0 16px;
-text-transform: uppercase;
-}
-
-.credit-box strong { color: var(–gold); }
-
-/* FOOTER */
-.site-footer {
-text-align: center;
-padding: 40px 20px;
-position: relative;
-z-index: 1;
-border-top: 1px solid rgba(232,0,29,0.15);
-}
-
-.site-footer p {
-font-family: ‘Orbitron’, sans-serif;
-font-size: 9px;
-letter-spacing: 3px;
-color: rgba(255,255,255,0.15);
-text-transform: uppercase;
-}
-
-/* SCROLL INDICATOR */
-.scroll-line {
-position: fixed;
-top: 0; left: 0;
-height: 3px;
-background: linear-gradient(90deg, var(–red), var(–blue));
-z-index: 9999;
-transition: width 0.1s linear;
-box-shadow: 0 0 10px var(–red);
-width: 0%;
-}
-
-/* SECTION SEPARATOR */
-.sep {
-height: 2px;
-background: linear-gradient(90deg, transparent, var(–red) 20%, var(–blue) 80%, transparent);
-margin: 0 0 40px;
-position: relative;
-z-index: 1;
-opacity: 0.5;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-.section-inner { padding: 28px 20px; }
-.download-grid { gap: 8px; }
-.dl-btn { padding: 12px 16px; font-size: 10px; }
-.logo-spider { letter-spacing: 4px; }
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--red); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1.5px solid rgba(230,48,48,0.5);
+    border-radius: 50%; pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+  }
+  body:has(a:hover) .cursor { width: 16px; height: 16px; background: var(--gold); }
+  body:has(a:hover) .cursor-ring { width: 52px; height: 52px; border-color: rgba(245,197,24,0.6); }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1; opacity: 0.5;
+  }
+
+  /* WEB PATTERN BACKGROUND */
+  .web-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.1) 60px, rgba(255,255,255,0.1) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.1) 60px, rgba(255,255,255,0.1) 61px);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--darker); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(4,5,8,0.95), transparent);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 4px;
+    background: linear-gradient(135deg, var(--red), var(--blue));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    color: var(--text-dim); text-decoration: none; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+    background: var(--red); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 24px 80px;
+    overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; width: 600px; height: 600px;
+    border-radius: 50%; filter: blur(120px); pointer-events: none;
+    top: 50%; left: 50%; transform: translate(-50%, -55%);
+    background: radial-gradient(circle, rgba(230,48,48,0.15), rgba(26,111,255,0.1), transparent 70%);
+    animation: breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { transform: translate(-50%, -55%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -55%) scale(1.1); opacity: 1; }
+  }
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    letter-spacing: 6px; color: var(--red); text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 14vw, 160px);
+    line-height: 0.9; letter-spacing: 4px; color: #fff;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title .accent-red { color: var(--red); }
+  .hero-title .accent-blue { color: var(--blue); }
+  .hero-sub {
+    margin-top: 24px; font-size: 17px; font-weight: 500;
+    color: var(--text-dim); letter-spacing: 1px;
+    max-width: 480px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-badges {
+    display: flex; gap: 12px; margin-top: 36px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .badge {
+    padding: 6px 16px; border: 1px solid var(--border);
+    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px;
+    color: var(--text-dim); text-transform: uppercase; border-radius: 2px;
+    background: rgba(255,255,255,0.02);
+  }
+  .badge.green { border-color: rgba(34,197,94,0.3); color: #22c55e; background: rgba(34,197,94,0.05); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+  .scroll-hint span { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--red), transparent); animation: scrollAnim 2s ease-in-out infinite; }
+  @keyframes scrollAnim {
+    0%, 100% { transform: scaleY(1); transform-origin: top; }
+    50% { transform: scaleY(0.4); transform-origin: top; }
+  }
+
+  /* ============ SECTION WRAPPER ============ */
+  .section-wrap { position: relative; z-index: 2; }
+
+  /* ============ GAME SECTION ============ */
+  .game-section {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .section-header {
+    display: flex; align-items: flex-end; gap: 24px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .section-header::after {
+    content: ''; position: absolute; bottom: -20px; left: 0; right: 0;
+    height: 1px; background: linear-gradient(to right, var(--red), transparent);
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 80px; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+    user-select: none;
+  }
+  .section-info { flex: 1; }
+  .section-tag {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .tag-pc { color: var(--blue); }
+  .tag-android { color: #22c55e; }
+  .tag-gta { color: var(--gold); }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: 2px; color: #fff; line-height: 1;
+  }
+
+  /* ============ CARDS ============ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+  .game-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .game-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(255,255,255,0.02));
+    pointer-events: none;
+  }
+  .game-card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-2px); }
+  .game-card .card-label {
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .game-card .card-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 26px;
+    letter-spacing: 1px; color: #fff; margin-bottom: 16px;
+  }
+  .card-meta {
+    display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px;
+  }
+  .meta-row {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    color: var(--text-dim);
+  }
+  .meta-row .dot {
+    width: 4px; height: 4px; border-radius: 50%; background: var(--red); flex-shrink: 0;
+  }
+
+  /* ============ DOWNLOAD BUTTONS ============ */
+  .btn-group { display: flex; flex-direction: column; gap: 8px; }
+
+  .dl-btn {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 18px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 600;
+    letter-spacing: 1px;
+    position: relative; overflow: hidden;
+    transition: color 0.25s, border-color 0.25s;
+    cursor: none;
+  }
+  .dl-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--accent-color, var(--red));
+    transform: translateX(-101%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .dl-btn:hover { color: #fff; border-color: transparent; }
+  .dl-btn:hover::before { transform: translateX(0); }
+  .dl-btn .btn-label { position: relative; z-index: 1; }
+  .dl-btn .btn-arrow {
+    position: relative; z-index: 1;
+    font-size: 18px; transition: transform 0.25s;
+  }
+  .dl-btn:hover .btn-arrow { transform: translateX(4px); }
+
+  /* Button color variants */
+  .dl-btn.blue { --accent-color: var(--blue); }
+  .dl-btn.green { --accent-color: #16a34a; }
+  .dl-btn.gold { --accent-color: #b45309; }
+  .dl-btn.purple { --accent-color: #7c3aed; }
+
+  /* PARTS GRID — for multi-part downloads */
+  .parts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .part-btn {
+    display: flex; align-items: center; justify-content: center;
+    padding: 10px 6px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px;
+    position: relative; overflow: hidden;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: none;
+  }
+  .part-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--red); transform: scale(0);
+    border-radius: 50%; transition: transform 0.4s ease;
+  }
+  .part-btn:hover { color: #fff; border-color: var(--red); }
+  .part-btn:hover::before { transform: scale(2.5); border-radius: 0; }
+  .part-btn span { position: relative; z-index: 1; }
+
+  /* ============ INFO STRIP ============ */
+  .info-strip {
+    padding: 14px 32px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    font-size: 13px; font-weight: 500; color: var(--text-dim);
+    margin-bottom: 8px;
+    font-family: 'Space Mono', monospace;
+  }
+  .info-strip.blue-strip { border-left-color: var(--blue); }
+  .info-strip.gold-strip { border-left-color: var(--gold); }
+  .info-strip strong { color: #fff; }
+
+  /* ============ INSTALL STEPS ============ */
+  .steps { margin: 20px 0; }
+  .step {
+    display: flex; gap: 16px; padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--red);
+    min-width: 28px; line-height: 1.2;
+  }
+  .step-text { font-size: 14px; font-weight: 500; color: var(--text); padding-top: 2px; }
+
+  /* ============ DIVIDER ============ */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  /* ============ WARNING CHIP ============ */
+  .warn-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px;
+    background: rgba(245,197,24,0.06);
+    border: 1px solid rgba(245,197,24,0.2);
+    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px;
+    color: var(--gold); text-transform: uppercase;
+    margin-top: 16px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 60px 40px 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 6px;
+    background: linear-gradient(135deg, var(--red), var(--blue));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  footer p {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    color: var(--text-dim); letter-spacing: 2px;
+  }
+
+  /* ============ AMBIENT GLOWS PER SECTION ============ */
+  .glow-corner {
+    position: absolute; width: 400px; height: 400px;
+    border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+  .glow-red-tl { top: 0; left: 0; background: rgba(230,48,48,0.06); }
+  .glow-blue-br { bottom: 0; right: 0; background: rgba(26,111,255,0.06); }
+  .glow-gold-tr { top: 0; right: 0; background: rgba(245,197,24,0.06); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 20px 60px; }
+    .game-section { padding: 60px 20px; }
+    .parts-grid { grid-template-columns: repeat(4, 1fr); }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ STAGGER REVEAL ============ */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
 </style>
-
 </head>
 <body>
 
-<div class="scroll-line" id="scrollLine"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="web-bg"></div>
 
-<!-- HERO HEADER -->
-
-<header class="site-header">
-  <div class="logo-spider">
-    AMAZING<span>SPIDER-MAN</span>
-  </div>
-  <div class="header-sub">⚡ Game Downloads Hub · PC · Android · Mods ⚡</div>
-</header>
-
-<div class="divider"><span class="divider-icon">⬡</span></div>
-
-<div class="wrapper">
-
-  <!-- SECTION 1: TASM PC -->
-
-  <section class="game-section">
-    <div class="section-bg" style="background-image: url('https://lh3.googleusercontent.com/sitesv/APaQ0SSnoH2LqXN5_ejXmH1kJN1xEcIkVFpJbxFfcLqBFPgN6wju3flyTKNf_5TtgbVbBuYkhJW9jy8HXrjAZUKWTDsG94w3Q2CJJwEPze1_SX3nOKyDyTV6G9iyUXo_AcWOaOlfHCrWvMaBK3d2CC6YnrU1mL16Dfj7pBOfeLqXOlrEMALMSnSYXF7tfNY=w16383');"></div>
-    <div class="section-inner">
-      <div class="platform-tag">Platform: PC · Windows</div>
-      <div class="section-title">The Amazing Spider-Man 2 <span class="badge">PC</span></div>
-
-```
-  <ul class="meta-list">
-    <li class="verified">✓ Virus Scan: Clean</li>
-    <li class="verified">✓ Scanned by McAfee</li>
-    <li>📦 File Size: 8 GB</li>
-    <li>📡 Source: AKTV (YouTube)</li>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">GAME VAULT</div>
+  <ul class="nav-links">
+    <li><a href="#spiderman-pc">Spider-Man PC</a></li>
+    <li><a href="#spiderman-android">Android</a></li>
+    <li><a href="#gta-sa">GTA SA</a></li>
   </ul>
+</nav>
 
-  <div class="instructions">
-    <div class="instructions-title">⬡ Installation Guide</div>
-    <ol>
-      <li>Download all files below</li>
-      <li>Select all downloaded files</li>
-      <li>Extract files — password required</li>
-      <li>Run the setup.exe file</li>
-      <li>Click Install and wait</li>
-      <li>Launch the game launcher</li>
-      <li>Enjoy the game!</li>
-    </ol>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">// Free Game Downloads</div>
+  <h1 class="hero-title">
+    <span class="accent-red">GAME</span><br>
+    <span class="accent-blue">VAULT</span>
+  </h1>
+  <p class="hero-sub">Premium game downloads for PC & Android. Modded, free, ready to play.</p>
+  <div class="hero-badges">
+    <div class="badge green">✓ Virus Scanned</div>
+    <div class="badge">PC + Android</div>
+    <div class="badge">Free Downloads</div>
+    <div class="badge">8GB+ Content</div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="section-wrap">
+
+<!-- ════════════════════════════════════ -->
+<!-- SPIDER-MAN 2 PC -->
+<!-- ════════════════════════════════════ -->
+<section class="game-section" id="spiderman-pc">
+  <div class="glow-corner glow-red-tl"></div>
+
+  <div class="section-header reveal">
+    <div class="section-num">01</div>
+    <div class="section-info">
+      <div class="section-tag tag-pc">// Windows PC</div>
+      <h2 class="section-title">The Amazing<br>Spider-Man 2</h2>
+    </div>
   </div>
 
-  <div class="password-box">
-    🔑 &nbsp; Archive Password: &nbsp; <strong>www.download.ir</strong>
+  <div class="card-grid">
+    <!-- Info Card -->
+    <div class="game-card reveal reveal-delay-1">
+      <div class="card-label">Game Details</div>
+      <div class="card-title">TASM 2 — PC</div>
+      <div class="card-meta">
+        <div class="meta-row"><span class="dot"></span>File Size: 8 GB</div>
+        <div class="meta-row"><span class="dot"></span>Platform: Windows PC</div>
+        <div class="meta-row"><span class="dot"></span>Parts: 8 files</div>
+        <div class="meta-row"><span class="dot" style="background:var(--blue)"></span>Virus Scan: McAfee — Clean</div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><div class="step-text">Download all 8 parts</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-text">Select all files & extract<br><span style="color:var(--text-dim);font-size:12px;">Password: <code style="color:var(--red)">www.download.ir</code></span></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-text">Run the Setup file</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-text">Click Install → Launch & Enjoy</div></div>
+      </div>
+    </div>
+
+    <!-- Download Card -->
+    <div class="game-card reveal reveal-delay-2">
+      <div class="card-label">Download Parts</div>
+      <div class="card-title">8 FILE PACK</div>
+      <div class="info-strip" style="margin-bottom:16px;">
+        Extract password: <strong>www.download.ir</strong>
+      </div>
+      <div class="parts-grid">
+        <a href="https://drive.google.com/uc?id=1J6uUN_LL8RET36znCXnvk8b-ZvUGpOs4&export=download" class="part-btn" target="_blank"><span>P1</span></a>
+        <a href="https://drive.google.com/uc?id=11a6vVJYGp_Gn9udfknRI2bLLWww_wh-I&export=download" class="part-btn" target="_blank"><span>P2</span></a>
+        <a href="https://drive.google.com/uc?id=1G7XyDe7SRcN7YkzyDavQGT3kmR7nSRpD&export=download" class="part-btn" target="_blank"><span>P3</span></a>
+        <a href="https://drive.google.com/uc?id=1_1rYAWYJ7ZhJruVixqUPWCAAEqrQFk3H&export=download" class="part-btn" target="_blank"><span>P4</span></a>
+        <a href="https://drive.google.com/uc?id=1VhDW80xjZ03CXmiy5oDZiGtnEW67skyU&export=download" class="part-btn" target="_blank"><span>P5</span></a>
+        <a href="https://drive.google.com/uc?id=1seVQJOPXPbnkKl5F72XjTmx8fAd_7pMI&export=download" class="part-btn" target="_blank"><span>P6</span></a>
+        <a href="https://drive.google.com/uc?id=1X-3iJw0H1ihhB4jK2_ijI7lNLjFogWZj&export=download" class="part-btn" target="_blank"><span>P7</span></a>
+        <a href="https://drive.google.com/uc?id=1C5ff_vcVjTki6vnK5C2zvF2VzLiC-Wfl&export=download" class="part-btn" target="_blank"><span>P8</span></a>
+      </div>
+      <div class="warn-chip">⚠ Source: AKTV via YouTube</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════ -->
+<!-- SPIDER-MAN 2 ANDROID -->
+<!-- ════════════════════════════════════ -->
+<section class="game-section" id="spiderman-android">
+  <div class="glow-corner glow-blue-br"></div>
+
+  <div class="section-header reveal">
+    <div class="section-num">02</div>
+    <div class="section-info">
+      <div class="section-tag tag-android">// Android Mod</div>
+      <h2 class="section-title">The Amazing<br>Spider-Man 2</h2>
+    </div>
   </div>
 
-  <div class="download-grid">
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=1J6uUN_LL8RET36znCXnvk8b-ZvUGpOs4&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 1</span>
-    </a>
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=11a6vVJYGp_Gn9udfknRI2bLLWww_wh-I&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 2</span>
-    </a>
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=1G7XyDe7SRcN7YkzyDavQGT3kmR7nSRpD&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 3</span>
-    </a>
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=1_1rYAWYJ7ZhJruVixqUPWCAAEqrQFk3H&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 4</span>
-    </a>
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=1VhDW80xjZ03CXmiy5oDZiGtnEW67skyU&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 5</span>
-    </a>
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=1seVQJOPXPbnkKl5F72XjTmx8fAd_7pMI&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 6</span>
-    </a>
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=1X-3iJw0H1ihhB4jK2_ijI7lNLjFogWZj&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 7</span>
-    </a>
-    <a class="dl-btn part" href="https://drive.google.com/uc?id=1C5ff_vcVjTki6vnK5C2zvF2VzLiC-Wfl&export=download" target="_blank">
-      <span class="btn-icon">⬇</span><span>Part 8</span>
-    </a>
+  <div class="card-grid">
+    <div class="game-card reveal reveal-delay-1">
+      <div class="card-label">Recommended — Single File</div>
+      <div class="card-title">TASM 2 MOD APK</div>
+      <div class="card-meta">
+        <div class="meta-row"><span class="dot" style="background:#22c55e"></span>Mod by: Androeed Gamer</div>
+        <div class="meta-row"><span class="dot" style="background:#22c55e"></span>Bundle Size: 633 MB (APK + OBB)</div>
+        <div class="meta-row"><span class="dot" style="background:#22c55e"></span>All Suits Unlocked</div>
+      </div>
+      <div class="btn-group">
+        <a href="https://www.mediafire.com/file/q17li85z5x1s4d1/ASM2_MOD_SIGNED.apk/file" class="dl-btn green" target="_blank">
+          <span class="btn-label">Download APK + OBB (633 MB)</span>
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+      <div class="steps" style="margin-top:20px;">
+        <div class="step"><div class="step-num">01</div><div class="step-text">Download the APK + OBB file</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-text">Install the APK</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-text">Tap Start & Enjoy!</div></div>
+      </div>
+    </div>
+
+    <div class="game-card reveal reveal-delay-2">
+      <div class="card-label">Old Version (Manual Install)</div>
+      <div class="card-title">TASM 2 v1.2.7d</div>
+      <div class="info-strip blue-strip">
+        Place OBB in: <strong>/android/obb/</strong>
+      </div>
+      <div class="btn-group" style="margin-top:16px;">
+        <a href="https://www.mediafire.com/file/kfdkawi96phd61u/TASM_2_v1.2.7d_Mega_MOD_%2528All_Suits_Purchased%2529_By_Androeed_Gamer.apk/file" class="dl-btn blue" target="_blank">
+          <span class="btn-label">Download Old Version APK</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="https://apkaward.com/the-amazing-spider-man-2-mod-obb" class="dl-btn" target="_blank">
+          <span class="btn-label">Download OBB Data</span>
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+      <div class="warn-chip">⚠ Mod by Androeed Gamer — Visit his YouTube</div>
+    </div>
   </div>
-</div>
-```
+</section>
 
-  </section>
+<div class="divider"></div>
 
-  <div class="sep"></div>
+<!-- ════════════════════════════════════ -->
+<!-- SPIDER-MAN 1 ANDROID -->
+<!-- ════════════════════════════════════ -->
+<section class="game-section" id="spiderman1-android">
+  <div class="glow-corner glow-red-tl"></div>
 
-  <!-- SECTION 2: TASM2 Android -->
-
-  <section class="game-section">
-    <div class="section-bg" style="background-image: url('https://lh3.googleusercontent.com/sitesv/APaQ0SRFB82UlPWGMMf8oI3aPs-AaeL1zyQwsUBAk73fSRTaHOg3uENIygmUjRbTi-q_9LDQSfc4-d1T5LQhChzI2wBU33Qhs5Bn0tMphLDw-0aXmtPhshsBzkyb7XadXRmYj3AZhzPMf3VpH4s6MAwtZhbKpD_0Ch2tSUoStHFkgeL0qDpBpmBzroh4zpI=w16383');"></div>
-    <div class="section-inner">
-      <div class="platform-tag">Platform: Android · Modded APK</div>
-      <div class="section-title">TASM 2 Android <span class="badge">MOD</span></div>
-
-```
-  <div class="credit-box">⚠️ Mod by <strong>ANDROEED GAMER</strong> — Please respect their effort and visit their channel.</div>
-
-  <div class="note recommended">★ Recommended — Single Link</div>
-  <div class="download-grid">
-    <a class="dl-btn" href="https://www.mediafire.com/file/q17li85z5x1s4d1/ASM2_MOD_SIGNED.apk/file" target="_blank">
-      <span class="btn-icon">⬇</span><span>Download APK + OBB &nbsp;·&nbsp; 633 MB</span>
-    </a>
-  </div>
-
-  <div class="note" style="margin-top: 24px;">Old Version</div>
-  <div class="download-grid" style="margin-bottom: 8px;">
-    <a class="dl-btn part" href="https://www.mediafire.com/file/kfdkawi96phd61u/TASM_2_v1.2.7d_Mega_MOD_%2528All_Suits_Purchased%2529_By_Androeed_Gamer.apk/file" target="_blank">
-      <span class="btn-icon">⬇</span><span>Old Version APK</span>
-    </a>
-    <a class="dl-btn part" href="https://apkaward.com/the-amazing-spider-man-2-mod-obb" target="_blank">
-      <span class="btn-icon">⬇</span><span>Download OBB</span>
-    </a>
+  <div class="section-header reveal">
+    <div class="section-num">03</div>
+    <div class="section-info">
+      <div class="section-tag tag-android">// Android Mod</div>
+      <h2 class="section-title">The Amazing<br>Spider-Man 1</h2>
+    </div>
   </div>
 
-  <div class="note warning">⚠ Not Recommended</div>
+  <div class="card-grid">
+    <div class="game-card reveal reveal-delay-1">
+      <div class="card-label">Installation Guide</div>
+      <div class="card-title">TASM 1 MOD</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><div class="step-text">Download APK + Data files</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-text">Install APK via file manager</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-text">Extract data → <strong>Android/data/</strong></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-text">Do 2 missions, then purchase items — money increases with every purchase</div></div>
+      </div>
+      <div class="info-strip" style="margin-top:16px; font-size:11px;">
+        Note: <strong>{Graphics not high quality}</strong>
+      </div>
+    </div>
 
-  <div class="instructions" style="margin-top: 12px;">
-    <div class="instructions-title">⬡ Installation (Latest)</div>
-    <ol>
-      <li>Download the files</li>
-      <li>Install the APK</li>
-      <li>Tap Start — enjoy!</li>
-    </ol>
+    <div class="game-card reveal reveal-delay-2">
+      <div class="card-label">Downloads</div>
+      <div class="card-title">APK + DATA</div>
+      <div class="btn-group">
+        <a href="https://apkaward.com/the-amazing-spider-man" class="dl-btn" target="_blank">
+          <span class="btn-label">Download MOD APK (apkaward)</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="https://www.mediafire.com/file/6urg82m3r7pgosx/Tasm1android.apk/file" class="dl-btn blue" target="_blank">
+          <span class="btn-label">Download APK (MediaFire)</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="https://apkout.com/getapkn.php" class="dl-btn green" target="_blank">
+          <span class="btn-label">Download Game Data Files</span>
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════ -->
+<!-- GTA SA ANDROID -->
+<!-- ════════════════════════════════════ -->
+<section class="game-section" id="gta-sa">
+  <div class="glow-corner glow-gold-tr"></div>
+
+  <div class="section-header reveal">
+    <div class="section-num">04</div>
+    <div class="section-info">
+      <div class="section-tag tag-gta">// Android Mod</div>
+      <h2 class="section-title">GTA San Andreas<br>Android</h2>
+    </div>
   </div>
 
-  <div class="instructions">
-    <div class="instructions-title">⬡ Installation (Old Version)</div>
-    <ol>
-      <li>Install the APK</li>
-      <li>Extract the OBB file</li>
-      <li>Place it in <strong style="color:var(--red)">/android/obb/</strong></li>
-      <li>Launch the game</li>
-    </ol>
+  <div class="card-grid">
+    <div class="game-card reveal reveal-delay-1">
+      <div class="card-label">Game Info</div>
+      <div class="card-title">GTA SA MOD</div>
+      <div class="card-meta">
+        <div class="meta-row"><span class="dot" style="background:var(--gold)"></span>Type: Mod APK</div>
+        <div class="meta-row"><span class="dot" style="background:var(--gold)"></span>APK Size: 16.2 MB</div>
+        <div class="meta-row"><span class="dot" style="background:var(--gold)"></span>OBB Size: 1,805 MB</div>
+        <div class="meta-row"><span class="dot" style="background:var(--gold)"></span>CLEO Cheat Support: Yes</div>
+      </div>
+      <div class="info-strip gold-strip">
+        OBB goes in: <strong>/android/obb/</strong> or <strong>/sdcard/</strong>
+      </div>
+    </div>
+
+    <div class="game-card reveal reveal-delay-2">
+      <div class="card-label">Downloads</div>
+      <div class="card-title">APK + OBB</div>
+      <div class="btn-group">
+        <a href="https://drive.google.com/file/d/1GGmtXHCdu81YGNSworePUKMDM1hBcjSX/view?usp=share_link" class="dl-btn gold" target="_blank">
+          <span class="btn-label">Download Mod APK (16 MB)</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="https://an1.com/file_6639-dw_cache.html" class="dl-btn" target="_blank">
+          <span class="btn-label">Download OBB (1.8 GB)</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="https://www.mediafire.com/file/1irehjuzcx2azsy/GTA_SA_2.0.Cleo%2528Nougat%252COreo%252CPie%252C_Android_10%2529.apk/file" class="dl-btn purple" target="_blank">
+          <span class="btn-label">Download APK for CLEO Cheats</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="https://www.mediafire.com/file/ku1k3z4u5g6r01b/DATA_ANDRENO.7z/file" class="dl-btn green" target="_blank">
+          <span class="btn-label">Download Adreno Data Pack</span>
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
   </div>
+</section>
 
-  <a class="dl-btn" href="https://www.youtube.com/AndroeedGamer" target="_blank" style="margin-top: 8px;">
-    <span class="btn-icon">▶</span><span>Androeed Gamer — YouTube</span>
-  </a>
-</div>
-```
+</div><!-- end section-wrap -->
 
-  </section>
-
-  <div class="sep"></div>
-
-  <!-- SECTION 3: TASM1 Android -->
-
-  <section class="game-section">
-    <div class="section-bg" style="background-image: url('https://lh3.googleusercontent.com/sitesv/APaQ0STN6Z7ZXM9FFLU8pyFP3PVjpkH6ndA0BxxS2mNTaDd2hSK-aR_5KFteS6gIsG1RJCh-fNwTZvT4syd_D_LKQV_irhO20ozCo98q-G5DOvYlGN2aCZoSfGH1J6QTC3xJMlWs9W_GxGKia1jkpDlBKGSPPpLX4cEjZN75T3-sEP9iia9VuZW9meWL=w16383');"></div>
-    <div class="section-inner">
-      <div class="platform-tag">Platform: Android · Modded APK</div>
-      <div class="section-title">TASM 1 Android <span class="badge">MOD</span></div>
-
-```
-  <div class="instructions" style="margin-bottom: 20px;">
-    <div class="instructions-title">⬡ Installation</div>
-    <ol>
-      <li>Download files below</li>
-      <li>Install APK from any file manager</li>
-      <li>Extract data &amp; place in <strong style="color:var(--red)">Android/data/</strong></li>
-      <li>Complete 2 missions, then purchase items — money increases!</li>
-    </ol>
-  </div>
-
-  <ul class="meta-list">
-    <li>Graphics: Low-Medium</li>
-    <li>Mod: Unlimited Money</li>
-  </ul>
-
-  <div class="download-grid">
-    <a class="dl-btn" href="https://apkaward.com/the-amazing-spider-man" target="_blank">
-      <span class="btn-icon">⬇</span><span>Download Mod APK</span>
-    </a>
-    <a class="dl-btn part" href="https://www.mediafire.com/file/6urg82m3r7pgosx/Tasm1android.apk/file" target="_blank">
-      <span class="btn-icon">⬇</span><span>MediaFire APK</span>
-    </a>
-    <a class="dl-btn part" href="https://apkout.com/getapkn.php" target="_blank">
-      <span class="btn-icon">⬇</span><span>Download Game Data</span>
-    </a>
-  </div>
-</div>
-```
-
-  </section>
-
-  <div class="sep"></div>
-
-  <!-- SECTION 4: GTA SA -->
-
-  <section class="game-section">
-    <div class="section-bg" style="background-image: url('https://lh3.googleusercontent.com/sitesv/APaQ0SRn2swzSmHhNfsouIG36Tms4xPSZWya_-TaEdvWLOMFawfDE6EUaF35xojkKNoK1QK5GdrLHP_t04t5bogjczFo5v8s2YCAnlFhVDKu-_RGcacw8xPvvdz6DjUIcc7fnyGkx0mKxbZvHyO8U3fwAMNtbLVY-EqLujPQ2zpXBY6b-jNfepz3y-2o=w16383');"></div>
-    <div class="section-inner">
-      <div class="platform-tag">Platform: Android · Mod APK</div>
-      <div class="section-title">GTA San Andreas <span class="badge">ANDROID</span></div>
-
-```
-  <ul class="meta-list">
-    <li>📱 Mod APK</li>
-    <li>📦 APK: 16.2 MB</li>
-    <li>💾 OBB: 1805 MB</li>
-    <li>🎮 CLEO Cheat Support</li>
-  </ul>
-
-  <div class="download-grid">
-    <a class="dl-btn" href="https://drive.google.com/file/d/1GGmtXHCdu81YGNSworePUKMDM1hBcjSX/view?usp=share_link" target="_blank">
-      <span class="btn-icon">⬇</span><span>Download APK</span>
-    </a>
-    <a class="dl-btn part" href="https://an1.com/file_6639-dw_cache.html" target="_blank">
-      <span class="btn-icon">⬇</span><span>Download OBB</span>
-    </a>
-    <a class="dl-btn part" href="https://www.mediafire.com/file/1irehjuzcx2azsy/GTA_SA_2.0.Cleo%2528Nougat%2CCOreo%2CPie%2C_Android_10%2529.apk/file" target="_blank">
-      <span class="btn-icon">⬇</span><span>CLEO Cheat APK</span>
-    </a>
-    <a class="dl-btn part" href="https://www.mediafire.com/file/ku1k3z4u5g6r01b/DATA_ANDRENO.7z/file" target="_blank">
-      <span class="btn-icon">⬇</span><span>Data (Adreno)</span>
-    </a>
-  </div>
-</div>
-```
-
-  </section>
-
-</div>
-
-<footer class="site-footer">
-  <p>Spider-Man Game Downloads · All files collected from third-party sources · Use at your own risk</p>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">GAME VAULT</div>
+  <p>All games collected from public sources. Scan files before installing. Mods credited to their respective creators.</p>
 </footer>
 
 <script>
-  // Scroll progress bar
-  window.addEventListener('scroll', () => {
-    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    document.getElementById('scrollLine').style.width = scrolled + '%';
-  });
+  // ── CUSTOM CURSOR ──
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  const animate = () => {
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animate);
+  };
+  animate();
 
-  // Card entrance observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-
-  document.querySelectorAll('.game-section').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
